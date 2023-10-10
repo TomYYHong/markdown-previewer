@@ -8,7 +8,8 @@
 .output {
   width: 400px;
   height: 50vh;
-  background: #DCDCDC;
+  background: #000000;
+  color: rgb(248, 247, 247);
   margin-left: auto;
   margin-right: auto;
   padding:10px;
@@ -21,4 +22,5 @@
   margin-left: auto;
   margin-right: auto;
   padding:10px;
+  color: black;
 }

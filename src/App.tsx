@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
-import './App.css'
-import Markdown from 'react-markdown'
+import React, { ChangeEvent, MouseEvent, useState } from "react";
+import "./App.css";
+import RactMarkdown from "react-markdown";
+import styled from "styled-components";
 
 function App() {
   const [markdown, setMarkdown] = useState(`# Hello World`);
   const [showGuide, setShowGuide] = useState(false);
 
-  const innerTextOutput = document.getElementById("output");
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setMarkdown(event.currentTarget.value);
+    console.log(markdown);
+  };
 
-  const changeOutput = () => {
+  const changeOutput = (event: MouseEvent<HTMLButtonElement>) => {
     setShowGuide(!showGuide);
     console.log(showGuide);
-    console.log("markdown: "+markdown);
-    console.log(<Markdown>{markdown}</Markdown>);
-    innerTextOutput?.innerHTML =<Markdown>{markdown}</Markdown>;
-  }
-
-
+  };
 
   return (
     <>
@@ -25,15 +24,20 @@ function App() {
       </div>
       {/* setOutput(event.target.value) */}
       <div className="mark-input">
-        <textarea className="input" onChange={(event) => setMarkdown(event.target.value)}> </textarea>
-        <button onClick={()=> changeOutput()}>Markdown input</button>
+        <textarea
+          className="input"
+          value={markdown}
+          onChange={handleChange}
+          placeholder="Enter your Markdown here..."
+        ></textarea>
+        <button onClick={changeOutput}>Markdown input</button>
       </div>
 
       <div className="mark-output">
-        <textarea className="output" value="output" id="output"> </textarea>
+        <RactMarkdown>{markdown}</RactMarkdown>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
