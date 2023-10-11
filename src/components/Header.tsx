@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const HeaderContainer = styled.header`
   width: 90%;
-  heigh: 200px;
+  height: 200px;
   background-color: black;
   color: white;
   display: flex;
@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleGuide }) => {
   return (
     <HeaderContainer>
       <Title> The markdown reviewer</Title>
-      <Button onClick={onToggleGuide}> TEST </Button>
+      <Button onClick={onToggleGuide}>Cheat Sheet </Button>
     </HeaderContainer>
   );
 };

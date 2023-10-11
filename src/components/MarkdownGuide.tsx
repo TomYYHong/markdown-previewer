@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+const Title = styled.h1`
+  margin: 0px;
+`;
 const GuideContainer = styled.div`
   display: flex;
   width: 100%;
@@ -11,31 +14,48 @@ const MarkdownGuide = styled.div`
   padding: 20px;
   margin: 10px;
   border: 1px solid rgb(221, 221, 221);
+  color: white;
 `;
 
-const Button = styled.button`
-  background-color: rgb(4, 114, 145);
-  color: rgb(203, 198, 192);
-  border-color: initial;
-  font-size: 16px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  &:hover {
-    padding: 10px;
-    background-color: rgb(97, 218, 251);
-    color: rgb(40, 44, 52);
-    cursor: pointer;
-    transition: background-color 0.2s ease 0s;
-  }
-`;
+const markdownGuide: React.FC = () => {
+  return <GuideContainer>
+    <MarkdownGuide>
+    <Title>Markdown Cheat Sheet</Title>
+    <ul>
+      <li>
+      <code># H1</code>
+      </li>
+      <li>
+      <code>## H2</code>
+      </li>
+      <li>
+      <code>### H3</code>
+      </li>
+      <li>
+      <code>**bold**</code>
+      </li>
+      <li>
+      <code>*italic*</code>
+      </li>
+      <li>
+      <code>[Link](http://a.com)</code>
+      </li>
+      <li>
+      <code>![Image](http://url/a.png)</code>
+      </li>
+      <li>
+      <code>`inline code`</code>
+      </li>
+      <li>
+      <code>``block code```</code>`
+      </li>
+      <li>
+      <code>- list item</code>
+      </li>
 
-interface HeaderProps {
-  onToggleGuide: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ onToggleGuide }) => {
-  return <div></div>;
+    </ul>
+    </MarkdownGuide>
+ </GuideContainer>;
 };
 
-export default Header;
+export default markdownGuide;

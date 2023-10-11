@@ -1,7 +1,9 @@
-import React, { ChangeEvent, MouseEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./App.css";
-import RactMarkdown from "react-markdown";
 import HeaderHandler from "./components/Header";
+import MarkdownInput from "./components/MarkdownInput";
+import MarkdownOutput from "./components/MarkdownOutput";
+import MarkdownGuide from "./components/MarkdownGuide";
 
 function App() {
   const [markdown, setMarkdown] = useState(`# Hello World`);
@@ -12,35 +14,24 @@ function App() {
     console.log(markdown);
   };
 
-  const changeOutput = (event: MouseEvent<HTMLButtonElement>) => {
-    setShowGuide(!showGuide);
-    console.log(showGuide);
-  };
 
   const onToggleGuide = () => {
+
     // Define the logic to execute when the button is clicked
+    
     console.log("Guide toggled.");
+    setShowGuide(!showGuide)
   };
 
   return (
     <>
       <div>
         <HeaderHandler onToggleGuide={onToggleGuide} />
+        {showGuide === true ? <MarkdownGuide /> : null}
       </div>
-      {/* setOutput(event.target.value) */}
       <div className="container">
-        <div className="mark-input">
-          <textarea
-            className="inputTextArea"
-            value={markdown}
-            onChange={handleChange}
-            placeholder="Enter your Markdown here..."
-          ></textarea>
-        </div>
-
-        <div className="mark-output">
-          <RactMarkdown>{markdown}</RactMarkdown>
-        </div>
+        <MarkdownInput onChange={handleChange} value={markdown} />
+        <MarkdownOutput markdown={markdown} />
       </div>
     </>
   );
