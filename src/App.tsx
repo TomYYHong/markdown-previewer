@@ -1,7 +1,7 @@
 import React, { ChangeEvent, MouseEvent, useState } from "react";
 import "./App.css";
 import RactMarkdown from "react-markdown";
-import styled from "styled-components";
+import HeaderHandler from "./components/Header";
 
 function App() {
   const [markdown, setMarkdown] = useState(`# Hello World`);
@@ -17,24 +17,30 @@ function App() {
     console.log(showGuide);
   };
 
+  const onToggleGuide = () => {
+    // Define the logic to execute when the button is clicked
+    console.log("Guide toggled.");
+  };
+
   return (
     <>
       <div>
-        <h1> The markdown reviewer</h1>
+        <HeaderHandler onToggleGuide={onToggleGuide} />
       </div>
       {/* setOutput(event.target.value) */}
-      <div className="mark-input">
-        <textarea
-          className="input"
-          value={markdown}
-          onChange={handleChange}
-          placeholder="Enter your Markdown here..."
-        ></textarea>
-        <button onClick={changeOutput}>Markdown input</button>
-      </div>
+      <div className="container">
+        <div className="mark-input">
+          <textarea
+            className="inputTextArea"
+            value={markdown}
+            onChange={handleChange}
+            placeholder="Enter your Markdown here..."
+          ></textarea>
+        </div>
 
-      <div className="mark-output">
-        <RactMarkdown>{markdown}</RactMarkdown>
+        <div className="mark-output">
+          <RactMarkdown>{markdown}</RactMarkdown>
+        </div>
       </div>
     </>
   );
